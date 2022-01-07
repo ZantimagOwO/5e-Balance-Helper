@@ -1,0 +1,273 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
+body
+{
+    background-color: #222222;
+    color: #cfcfcf;
+    font-family: Roboto,Helvetica,sans-serif;
+    min-height: 3300px;
+    height: fit-content;
+}
+
+#body1
+{
+    position: relative;
+    top: 200px;
+    left: 120px;
+    width: 1000px;
+}
+
+#traits
+{
+    color: #cfcfcf;
+    text-align: justify;
+    position: relative;
+    width: 1670px;
+    margin-bottom: 100px;
+}
+
+table thead th
+{
+    padding-right: 50px;
+}
+
+#traitsbody td
+{
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    vertical-align: top;
+    min-width: 150px;
+}
+
+#traitsbody td[name='descriptionCell'] 
+{
+    width: 400px;
+}
+
+#traitsbody [name='description']
+{
+    width: 100%;
+}
+
+#traitsbody [name='effect_on_CRCell']
+{
+    width: 350px;
+}
+
+#tratisbody [name='effect_on_CR']
+{
+    width: 100%;
+}
+
+[name='traitCell']
+{
+    width: 20px;
+}
+
+#traitsbody [name='exampleCell']
+{
+    width: 150px;
+}
+
+#traitsbody [name='example']
+{
+    width: 100%;
+    text-align: left;
+}
+
+#traitsbody tr:nth-last-child(1)
+{
+    border-bottom: #222222;
+}
+
+
+input[type=number]
+{
+    width: 80px;
+}
+
+td
+{
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
+
+#attacks th
+{
+    max-width: 40px;
+    vertical-align: middle;
+}
+
+#atksbody td
+{
+    text-align: center;
+}
+
+#PCsbody td select
+{
+    width: auto;
+}
+
+#PCsbody td
+{
+    text-align: center;
+}
+
+#results 
+{
+    position: absolute;
+    left: 870px;
+    top: 90px;
+    width: 800px;
+    background-color: #111111;
+}
+
+#addatk, #rmvatk
+{
+    margin-bottom: 15px;
+}
+
+#AB
+{
+    margin-bottom: 40px;
+}
+
+#addPC, #rmvPC
+{
+    margin-bottom: 100px;
+}
+
+#simulated1v1s 
+{
+    background-color: #111111;
+    position: absolute;
+    width: 500px;
+    margin-bottom: 300px;
+}
+
+#info 
+{
+    background-color: #111111;
+    position: absolute;
+    width: 500px;
+    left: 600px;
+    margin-bottom: 300px;
+}
+
+#alerts 
+{
+    background-color: #111111;
+    position: absolute;
+    width: 500px;
+    left: 1200px;
+    margin-bottom: 300px;
+}
+
+#output
+{
+    text-align: justify;
+    padding-bottom: 300px;
+}
+
+.title
+{
+    text-align: center;
+    margin: 15px;
+}
+
+button
+{
+    margin-right: 3px;
+}
+
+#PCsbody>tr[id*='-0']>td
+{
+    padding-bottom: 50px;
+}
+
+#simulated1v1s h2
+{
+    background-color: #1a1a1a;
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+#info h2
+{
+    background-color: #1a1a1a;
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+#alerts h2
+{
+    background-color: #1a1a1a;
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+#Def
+{
+    margin-bottom: 45px;
+    margin-top: 25px;
+}
+
+#output div[id*=kill]
+{
+    color: red;
+    filter: brightness(0.8);
+}
+
+#output div[id*=unconscious]
+{
+    color: orange;
+    filter: brightness(0.8);
+}
+
+#tipsandinfobtn, #goback
+{
+    position: absolute;
+    right: 114px;
+    top: 125px;
+    background-color: white;
+    width: 100px;
+}
+
+#tipsandinfo
+{
+    position: absolute;
+    left: 120px;
+    width: 1400px;
+    top: 1000px;
+}
+
+#tipsandinfo .display-4
+{
+    margin-bottom: 80px;
+    margin-top: 140px;
+}
+
+#tipsandinfo p
+{
+    margin-bottom: 60px;
+    text-align: justify;
+    color: rgb(215, 218, 220);
+}
+
+#index_list
+{
+    width: 200px;
+    position: relative;
+    top: 160px;
+    margin-bottom: 250px;
+    background-color: #cfcfcf;
+}
+
+#pagetitle
+{
+    position: absolute;
+    left: 114px;
+    top: 50px;
+    text-decoration:wavy;
+}

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" type="image/png" href="https://lh3.googleusercontent.com/fDVOxwpp5A9iiAmy1ZUYhrfxfpXSd3SDsTBwxVuLnhJTQlylmVTJlfG4AsK3rGxdVaCp=s32" />
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="/static/css/styles.css" rel="stylesheet">
+
+        <title>D&D 5e Balance Helper</title>
+
+        <script src="/static/js/form2.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script>
+
+            jQuery(function(){
+
+                
+
+                addPC();
+
+                addPC();
+
+                add_atk();
+
+                add_atk();
+
+                addtrait();
+                
+                $("#rmvres").hide()
+
+                $("#OR").hide()
+
+                $("#resistances").hide()
+
+                $("#vulnerabilities").hide()
+
+                $("#rmvvul").hide()
+
+                $("#attack_bonus_PCsshow").hide()
+
+                var rmvtrait = document.getElementById("rmvtrait")
+
+                rmvtrait.style.visibility = "hidden"
+
+                var go_back = document.getElementById("goback")
+
+                go_back.style.visibility = "hidden"
+
+                var tips_and_info = document.getElementById("tipsandinfo")
+
+                tips_and_info.style.visibility = "hidden"
+                
+                $("#tipsandinfo").css("top", "0px")
+            })
+
+        </script>
+
+    </head>
+
+    <body class="general ">
+
+        <h1 class="display-3" id="pagetitle">D&D 5th Edition Balance Helper Tool</h1>
+
+        <button type="button" class="btn btn-lg" aria-pressed="true" id="tipsandinfobtn" onclick="tips_and_info()">Tips & Info</button>
+
+        <button type="button" class="btn btn-lg" id="goback" onclick="go_back()">Go Back</button>
+
+        <div id="body1">
+
+            <div id="monster">
+                <h1 class="display-4">The monster's stats</h1>
+
+                    <form>
+
+                        <table id="Def">
+                            <thead>
+                                <th>
+                                    <h4>HP</h4>
+                                </th>
+                                <th>
+                                    <h4>AC</h4>
+                                </th>
+                                <th>
+                                    <h4>Resistances</h4>
+                                </th>
+                                <th>
+                                    <h4>Vulnerabilities</h4>
+                                </th>
+                            </thead>
+                            <tbody id="Defbody">
+                                <tr>
+                                    <td name="HPcell"><input type="number" min="0" placeholder="HP" oninput="doo()"  id="HP"></td>
+                                    <td name="ACcell"><input type="number" id="AC" min="0" placeholder="Armor Class" oninput="doo()" value="13" name="AC"></td>
+                                    <td>
+                                        <select name="res" class="form-select form-select-sm" onchange="doo()">
+                                            <option disabled value="" selected>---Resistance---</option>
+
+                                            <option value="bludgeoning">Bludgeoning</option>
+
+                                            <option value="piercing">Piercing</option>
+
+                                            <option value="slashing">Slashing</option>
+
+                                            <option value="acid">Acid</option>
+
+                                            <option value="cold">Cold</option>
+
+                                            <option value="fire">Fire</option>
+
+                                            <option value="force">Force</option>
+
+                                            <option value="lightning">Lightning</option>
+
+                                            <option value="necrotic ">Necrotic </option>
+
+                                            <option value="poison">Poison</option>
+
+                                            <option value="psychic">Psychic</option>
+
+                                            <option value="radiant ">Radiant </option>
+
+                                            <option value="thunder ">Thunder </option>
+
+                                            <option value="magical-bludgeoning">Magical Bludgeoning</option>
+
+                                            <option value="magical-piercing">Magical Piercing</option>
+
+                                            <option value="magical-slashing">Magical Slashing</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="vul" class="form-select form-select-sm" onchange="doo()">
+                                            <option disabled value="" selected>---Vulnerability---</option>
+
+                                            <option value="bludgeoning">Bludgeoning</option>
+
+                                            <option value="piercing">Piercing</option>
+
+                                            <option value="slashing">Slashing</option>
+
+                                            <option value="acid">Acid</option>
+
+                                            <option value="cold">Cold</option>
+
+                                            <option value="fire">Fire</option>
+
+                                            <option value="force">Force</option>
+
+                                            <option value="lightning">Lightning</option>
+
+                                            <option value="necrotic ">Necrotic </option>
+
+                                            <option value="poison">Poison</option>
+
+                                            <option value="psychic">Psychic</option>
+
+                                            <option value="radiant ">Radiant </option>
+
+                                            <option value="thunder ">Thunder </option>
+
+                                            <option value="magical-bludgeoning">Magical Bludgeoning</option>
+
+                                            <option value="magical-piercing">Magical Piercing</option>
+
+                                            <option value="magical-slashing">Magical Slashing</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <button type="button" class="btn btn-success" id="addres" onclick="add_res()">+</button>
+                                        <button type="button" class="btn btn-danger" id="rmvres" onclick="rmv_res()">-</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-success" id="addvul" onclick="add_vul()">+</button>
+                                        <button type="button" class="btn btn-danger" id="rmvvul" onclick="rmv_vul()">-</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h2>Attacks</h2>
+
+                        <table id="attacks">
+                            <thead>
+                                <th><h4>Dice</h4></th>
+                                <th></th>
+                                <th><h4>Size</h4></th>
+                                <th></th>
+                                <th><h4>Damage Bonus</h4></th>
+                                <th></th>
+                                <th><h4>Times each turn</h4></th>
+                            </thead>
+                            <tbody id="atksbody" >
+
+                            </tbody>
+
+                            
+
+                        </table>
+
+                        <button type="button" id="addatk" class="btn btn-success" onclick="add_atk()">+</button> <button class="btn btn-danger" type="button" id="rmvatk" onclick="rmv_atk()">-</button>
+
+                        <h3>Attack Bonus</h3>
+                        
+                        <p><input type="number" min="0" placeholder="Attack Bonus" value="3" oninput="doo()"  id="AB"> </p>
+
+                    </form>
+
+                    
+
+            </div>
+
+            <div >
+                
+                <table id="traits" class="table">
+                    <thead>
+                        <th><h2>Traits</h2></th>
+                        <th><h2>Description</h2></th>
+                        <th><h2>Example</h2></th>
+                        <th><h2>Effect on CR</h2></th>
+                    </thead>
+                    <tbody id="traitsbody">
+                        <tr>
+                            <td>
+                                <div>
+                                    <button type="button" class="btn btn-success" id="addtrait" onclick="addtrait()">+</button>
+                                    <button type="button" class="btn btn-danger" id="rmvtrait" onclick="rmvtrait()">-</button>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div id="party">
+                <h1 class="display-4">The party's stats</h1>
+
+                <div>
+                
+                    <table id="PCs">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    HP
+                                </th>
+                                <th>
+                                    AC
+                                </th>
+                                <th>
+                                    Resistances
+                                </th>
+                                <th>
+                                    Class
+                                </th>
+                                <th id="attack_bonus_PCsshow">
+                                    Attack Bonus
+                                </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead >
+                        <tbody id="PCsbody" name="PCsbody">
+
+                        </tbody>
+                    </table>
+                
+                </div>
+                
+                <button type="button" class="btn btn-success" id="addPC" onclick="addPC()">+</button>
+                
+                <button type="button" class="btn btn-danger" id="rmvPC" onclick="rmvPC()">-</button>
+
+                <div id="output">
+                
+                
+                    <div id="simulated1v1s" class="container rounded">
+
+                        <h1 class="title">Simulated 1v1s</h1>
+
+                    </div>
+
+            
+                    <div id="info" class="container rounded">
+
+                            <h1 class="title">Info</h1>
+                            
+                            <div id="monsterinfo">
+
+                            </div>
+
+                            <div id="PCsinfo">
+
+                            </div>
+                    </div>
+
+                    <div id="alerts" class="container rounded">
+
+                        <h1 class="title">Alerts</h1>
+
+                        <div id="hit_alerts">
+
+                            <div id="hit_kill"></div>
+
+                            <div id="hit_unconscious"></div>
+
+                        </div>
+
+                        <div id="crit_alerts">
+
+                            <div id="crit_kill"></div>
+
+                            <div id="crit_unconscious"></div>
+
+                        </div>
+
+                        <div id="DPR_alerts">
+
+                            <div id="DPR_kill"></div>
+
+                            <div id="DPR_unconscious"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="results" class="container rounded">
+                
+                        <h1 class="title">CR Results</h1>
+            
+                        <h2> CR: <b id="CR"></b></h2>
+            
+                        <h2>Offensive CR: <b id="OCR"></b> </h2>
+            
+                        <h2>Defensive CR: <b id="DCR"></b> </h2>
+            
+                        <h2>Recommended DC: <b id="RDC"></b> </h2>
+            
+                        <h2>Recommended Proficiency Bonus: <b id="RPB"></b> </h2>
+            
+                        <h2>Average DPR: <b id="ShowDPR"> </b></h2>
+            
+            
+                        <div id="alternative_results">
+                            
+                            <h2 id="OR"> -- OR --</h2>
+            
+            
+                            <h2 id="resistances">Defensive CR <b id="CRres"></b> if the party dealt only <b id="CRresistances"></b> damage.</h2>
+                            <h2 id="vulnerabilities">Defensive CR <b id="CRvul"></b> if the party dealt only <b id="CRvulnerabilities"></b> damage.</h2>
+                        </div>
+                        
+                        
+                    </div>
+
+
+
+                    
+            
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="tipsandinfo" class="text-justify">
+
+            <div id="index_list" class="list-group">
+
+
+                <button class="list-group-item list-group-item-action" type="button" onclick="document.getElementById('about_the_page').scrollIntoView();">About the page</button>
+
+                <button class="list-group-item list-group-item-action" type="button" onclick="document.getElementById('balancing_tips').scrollIntoView();">Balancing Tips</button>
+
+                <button class="list-group-item list-group-item-action" type="button" onclick="document.getElementById('on_spellcasting').scrollIntoView();">On Spellcasting</button>
+
+                <button class="list-group-item list-group-item-action" type="button" onclick="document.getElementById('sources').scrollIntoView();">Sources</button>
+
+
+            </div>
+
+            <h1 class="display-4" id="about_the_page">About the page</h1>
+
+            <h2>
+                <p>Welcome to 5e Balance Helper! This web was created with the purpose of helping DMs balance monsters, as I felt that there was no similar resource already available.</p>
+
+                <p>Note that the purpose of this web is to help in the creation or tweaking of balanced monsters for your party, not to help balance encounters themselves or manage the party's daily budget for encounters. 
+                For this purpose, I heavily recommend either <a href="https://koboldplus.club/#/encounter-builder" target=”_blank” rel="noopener noreferrer">Kobold Fight Club</a> (not working at the time of writing this) or the <a href="https://www.dndbeyond.com/encounter-builder" target=”_blank” rel="noopener noreferrer">DnD Beyond Encounter Builder</a>.</p>
+
+                <p>Other webs that might also be useful to you are <a href="http://tools.goblinist.com/5enc" target=”_blank” rel="noopener noreferrer">Goblinist</a> for random encounter generation and <a href="https://anydice.com/" target=”_blank” rel="noopener noreferrer">Any Dice</a> for dice statistics.</p>
+
+                <p>In the "Alerts" field, whenever something is mentioned as "very likely", "likely" or "potentially", it means that the monster would have to roll
+                    at least 0-50%, 50-65%, and 65-100% of its max possible damage, respectively, for that situation to happen.
+                    If something is listed as having a chance to kill a PC, the attack is always very likely to drop the PC unconscious, 
+                    and this is omitted to avoid redundancy.</p>
+
+                <p>Also, the "Traits" table is <b>NOT</b> automated, meaning that it is up to you to manually change the monster's stats. 
+                    This is on purpose, as the table offers only a guideline and you may want to change some aspects of the trait. The table also omits any trait that is listed as not having any effect on CR, except for Damage Absorption.
+                </p>
+
+                <p>
+                    Note that for the "Alerts", "Info" and "Simulated 1v1s" tabs to work, at least one PC and the monster need to have a set HP and the monster 
+                    needs to have at least one attack.
+                </p>
+
+
+
+            </h2>
+
+            
+            <h1 class="display-4" id="balancing_tips" target=”_blank”>Balancing tips</h1>
+
+            <h2>
+                <p>Balancing in 5e is more complex than it may appear at first glance, and as such it generates a lot of discussions. There are communities that discuss such topics that
+                    might give you a lot of insight into the system's balance, especially if you are a new DM, like the <a href="https://www.reddit.com/r/DMAcademy/" target=”_blank” rel="noopener noreferrer">DM Academy</a>, <a href="https://www.reddit.com/r/DnDHomebrew/" target=”_blank” rel="noopener noreferrer">D&D Hombrew</a>,  
+                    and <a href="https://www.reddit.com/r/UnearthedArcana/" target=”_blank” rel="noopener noreferrer">Unearthed Arcana</a> subreddits. <a href="https://koboldplus.club/#/encounter-builder" target=”_blank” rel="noopener noreferrer">Kobold Fight Club</a> is a great balancing tool, but at the time of writing this is having some issues, so it might not work.
+                </p>
+
+                <p>
+                    One of the main problems you will probably run into is the Standard Adventuring Day. 
+                    This is a measurement of how many encounters (not necessarily combat) the party is supposed to face in one 
+                    single day (though it may be split into different sessions, or many days might transpire in a single session); 6-8 medium/hard encounters.
+                    The game is balanced around this, but a lot of tables don't have that many encounters per day or allow players to take much more frequent long rests (Curse of Strahd is an example of this), 
+                    which usually results in classes whose resources replenish on long rests being much more powerful (mainly the paladin and the full casters). 
+                </p>
+
+                <p>
+                    Every table will handle this differently, using the Gritty Realism variant rule (DMG 272) is one way, but if you search online you will find hundreds of discussions 
+                    on this topic with different solutions; trial and error will, in the long run, help your table be a lot more balanced.
+                </p>
+
+                <p>
+                    Now, onto balancing monsters! If you take a look at the Monster Manual or run one of the many 5e modules, you will see that some monsters can easily kill 
+                    PCs even if used accordingly to their CR (for example, the Shadow's Strength Drain can make quick work of characters with low strength, even at higher levels), 
+                    so keeping an eye out for this kind of thing is REALLY important. CR is not a useless system, but beware that it is also far from a perfect one.
+                    Here is a list of some of the most problematic creatures for low-level play, (some of these are problematic even at higher levels): Banshee, Basilisk, 
+                    Gelatinous Cube (Really ANY of the Oozes.), Intellect Devourer, Lycanthropes, Mimic, Specter Mummies, Shadow, Vampire Spawn, Vargouille, and both the 
+                    giant wasp and the giant poisonous snake.
+                </p>
+
+                <p>
+                    Another common problem is that some monsters straight-up deal enough damage to instantly down or kill PCs at low levels, even following CR guidelines; 
+                    a creature with an average DPR ranging between 9-14 is CR1, but most level 1 PCs have 8-15 hp.
+                    This web has an "Alerts" tab to warn you if this is a possibility, and
+                     in my personal experience, for low levels, it is best to simply have easier encounters, especially if the players are new; this will save you a lot of headaches.
+                </p>
+
+                <p>
+                    A way to at least alleviate such problems, which will still be there in the form of monster abilities such as the dragons' Breath Weapon, is to use smaller dice, such as 
+                    d4s or d6s, as this will help you keep a more consistent damage and lower the max damage, avoiding both the case of the monster's cool big attack doing little damage and the case of it 
+                    downing half the party in the first round. <a href="https://anydice.com/" target=”_blank” rel="noopener noreferrer">Any Dice</a> might prove useful for this.
+                </p>
+
+                <p>
+                    Finally, if you are having serious trouble balancing encounters, don't particularly like the official CR system or are simply curious as to how the CR and XP systems work in more detail, 
+                    <a href="https://www.reddit.com/r/dndnext/comments/mdq8oo/understanding_xp_and_encounter_difficulty/" target=”_blank” rel="noopener noreferrer">this post</a> explains it quite well, and the 
+                    <a href="https://blogofholding.com/?p=7338" target=”_blank” rel="noopener noreferrer">5e MM on a business card</a> provides an alternate method of balancing monsters, done having first the CR 
+                    and then calculating stats accordingly, that has received many compliments.
+                </p>
+            </h2>
+
+            <h1 class="display-4" id="on_spellcasting">On Spellcasting</h1>
+
+            <h2>
+                <p>
+                    As you may have noticed, this web does not include an option to add Spellcasting to the monster or the players. 
+                    This is because, put simply, mixing spells and CR is not really a thing. The DMG's only saying in this is that if a monster has a spell
+                    that increases its AC, apply it, and if it has a spell that deals more damage than the monster usually does, take that into account for one round,
+                     which is not very helpful.
+                </p>
+
+                <p>
+                    However, if you want to know how much damage an area of effect such as Fireball would deal for the purposes of calculating CR, the 
+                    Breath Weapon trait's effect on CR is likely your best bet; "For the purpose of determining its effective damage output, assume the breath weapon hits two targets, 
+                    and that each target fails its saving throw.". It is far from perfect, but if the designers of 5e specified these guidelines, it must have been for a reason.
+                    Bear in mind, though, that this was designed for one of the most powerful abilities a monster can have relative to its CR, which also has a recharge
+                    mechanic.
+                </p>
+            </h2>
+            
+            <h1 class="display-4" id="sources">Sources</h1>
+
+            <h2>
+                <p>
+                    <a href="https://www.dndbeyond.com/sources/basic-rules/building-combat-encounters" target=”_blank” rel="noopener noreferrer">Standard Adventuring Day</a>
+                </p>
+
+                <p>
+                    CR calculations and monster traits table based on the DMG's "Creating a Monster" guidelines (pages 272-283)
+                </p>
+
+                <p>
+
+                </p>
+            </h2>
+
+        </div>
+
+
+
+        
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    </body>
+</html>
