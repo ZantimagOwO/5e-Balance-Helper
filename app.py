@@ -37,7 +37,7 @@ def CR():
     OCR = not_neg(calculate_off_CR(DPR, AB))
 
     # CR
-    CR = round(((OCR + DCR) / 2.0), 3)
+    CR = round(((OCR + DCR) / 2.0), 1)
 
     # Recommended DC
     RDC = calculateDC(CR)
@@ -46,10 +46,13 @@ def CR():
     PB = calculatePB(CR)
 
     # Calculate the monsters def CR if it were resistant to all damage
-    CRres = not_neg(calculate_def_CR((HP * 2.0), AC))
+    CRres = round(not_neg(calculate_def_CR((HP * 2.0), AC)), 1)
 
     # Calculate the monsters def CR if it were vulnerable to all damage
-    CRvul = not_neg(calculate_def_CR((HP * 0.5), AC))
+    CRvul = round(not_neg(calculate_def_CR((HP * 0.5), AC)), 1)
+
+    #Round the CR
+
 
     d = {
         "DCR" : DCR,
